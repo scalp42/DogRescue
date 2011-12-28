@@ -7,6 +7,7 @@ Dogrescue::Application.routes.draw do
   namespace :admin do
     resources :users
     resources :sessions
+    resources :dogs
   end
 
   # The priority is based upon order of creation:

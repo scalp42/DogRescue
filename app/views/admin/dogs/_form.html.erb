@@ -1,0 +1,38 @@
+<%= form_for([:admin, @dog], :html => { :class => "form-stacked" }) do |f| %>
+  <% if @dog.errors.any? %>
+    <div id="error_explanation" class="alert-message block-message error">
+      <h2><%= pluralize(@dog.errors.count, "error") %> prohibited this dog from being saved:</h2>
+
+      <ul>
+      <% @dog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+	<fieldset>
+
+		<div class="clearfix">
+			<%= f.label :name %>
+			<%= f.text_field :name %>
+		</div>
+		<div class="clearfix">
+			<%= f.label :breed %>
+			<%= f.text_field :breed %>
+		</div>
+		<div class="clearfix">
+			<%= f.label :description %>
+			<%= f.text_area :description, :style => "width: 300px; height: 100px;" %>
+		</div>
+		<div class="clearfix">
+			<%= f.label :status %>
+			<%= f.select(:status, [['Available', 'available'], ['Not available', 'not available']]) %>
+		</div>
+
+	</fieldset>
+	
+  <div class="clearfix">
+    <%= f.submit :class => "btn primary" %>
+  </div>
+<% end %>

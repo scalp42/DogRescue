@@ -1,0 +1,33 @@
+<h1>Listing dogs</h1>
+
+<% if flash[:success] %>
+<div class="alert-message success">
+	<p><%= flash[:success] %></p>
+</div>
+<% end %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Breed</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dogs.each do |dog| %>
+  <tr>
+    <td><%= dog.name %></td>
+    <td><%= dog.breed %></td>
+    <td><%= dog.description %></td>
+    <td><%= dog.status %></td>
+    <td><%= link_to 'Edit', edit_admin_dog_path(dog) %></td>
+    <td><%= link_to 'Destroy', admin_dog_path(dog), confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dog', new_admin_dog_path, :class => "btn primary" %>
