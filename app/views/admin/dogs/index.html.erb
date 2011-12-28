@@ -8,6 +8,7 @@
 
 <table>
   <tr>
+	<th>Image</th>
     <th>Name</th>
     <th>Breed</th>
     <th>Description</th>
@@ -18,9 +19,10 @@
 
 <% @dogs.each do |dog| %>
   <tr>
+	<td><%= link_to(image_tag("/uploads/#{dog.image}", :style => "width: 150px;"), edit_admin_dog_path(dog)) %></td>
     <td><%= dog.name %></td>
     <td><%= dog.breed %></td>
-    <td><%= dog.description %></td>
+    <td><%= truncate(dog.description, :length => 250) %></td>
     <td><%= dog.status %></td>
     <td><%= link_to 'Edit', edit_admin_dog_path(dog) %></td>
     <td><%= link_to 'Destroy', admin_dog_path(dog), confirm: 'Are you sure?', method: :delete %></td>

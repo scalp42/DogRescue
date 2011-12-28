@@ -11,8 +11,12 @@
     </div>
   <% end %>
 
-	<fieldset>
+	<% if @dog.image %>
+	<%= image_tag "/uploads/#{@dog.image}" %>
+	<% end %>
 
+	<fieldset>
+		
 		<div class="clearfix">
 			<%= f.label :name %>
 			<%= f.text_field :name %>
@@ -28,6 +32,11 @@
 		<div class="clearfix">
 			<%= f.label :status %>
 			<%= f.select(:status, [['Available', 'available'], ['Not available', 'not available']]) %>
+		</div>
+		
+		<div class="clearfix">
+			<%= f.label :image %>
+			<%= f.file_field :image %>
 		</div>
 
 	</fieldset>

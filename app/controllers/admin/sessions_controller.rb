@@ -15,7 +15,7 @@ class Admin::SessionsController < ApplicationController
       user = User.authenticate(params[:email], params[:password])
       session[:current_user_id] = user.id
       flash[:success] = "Welcome back #{user.name}"
-      redirect_to admin_users_index_path
+      redirect_to admin_dogs_path
       
     #if the user doesn't exist
     rescue NoSuchUserError

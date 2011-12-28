@@ -21,8 +21,12 @@ class Admin::DogsController < ApplicationController
   # POST /dogs
   # POST /dogs.json
   def create
+    
+    #handle upload
+    handle_upload
+    
     @dog = Dog.new(params[:dog])
-
+    
     if @dog.save
       flash[:success] = "Dog was successfully created"
       redirect_to edit_admin_dog_path(@dog)
@@ -35,6 +39,10 @@ class Admin::DogsController < ApplicationController
   # PUT /dogs/1
   # PUT /dogs/1.json
   def update
+    
+    #handle the upload
+    handle_upload
+    
     @dog = Dog.find(params[:id])
 
     if @dog.update_attributes(params[:dog])
@@ -55,6 +63,20 @@ class Admin::DogsController < ApplicationController
 
     redirect_to admin_dogs_path
 
-  end  
+  end 
+  
+  
+  protected 
+  
+  #Handle file upload
+  def handle_upload
+    if params[:dog][:image]  
+      uploaded_io = params[:dog][:image]
+      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+      params[:dog][:image] = uploaded_io.original_filename
+    end
+  end 
   
 end
