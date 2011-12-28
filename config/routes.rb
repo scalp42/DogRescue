@@ -1,11 +1,13 @@
 Dogrescue::Application.routes.draw do
 
+  get "admin/login" => "admin/sessions#new", :as => "admin_login"
+  get "admin/logout" => "admin/sessions#destroy", :as => "admin_logout"
+
   get "admin/users/index"
   namespace :admin do
     resources :users
+    resources :sessions
   end
-
-  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

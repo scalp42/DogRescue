@@ -8,6 +8,8 @@
 </head>
 <body style="padding: 60px;">
 	
+	<% # Only show the top bar if logged in %>
+	<% if @current_user %>
 	<div class="topbar">
 		<div class="topbar-inner">
 			<div class="container">
@@ -17,11 +19,12 @@
 					<li><a href="/admin/users">Users</a></li>
 				</ul>
 				<ul class="nav" style="float: right;">
-					<li><a href="/admin/logout">Logout</a></li>
+					<li><%= link_to 'Logout', admin_logout_path %></li>
 				</ul>
 			</div>
 		</div>
 	</div>
+	<% end %>
 	
 	<div class="container">
 		

@@ -1,6 +1,10 @@
 class Admin::UsersController < ApplicationController
   
+  #Set the layout to the admin layout
   layout "admin"
+  
+  #Requires a logged in user to use this controller
+  before_filter :require_login
   
    # GET /admin/users
    def index

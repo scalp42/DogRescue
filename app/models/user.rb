@@ -12,6 +12,29 @@ class User < ActiveRecord::Base
   #callback
   before_save :encrypt_password
   
+  #Gets the full name
+  def name
+    first_name + " " + last_name
+  end
+  
+  #Authenticate 
+  def self.authenticate(email, password)
+    
+    #Get the user
+    user = self.find_by_email(email)
+    
+    if user.nil?
+      raise NoSuchUserError, "No user with email #{email}"
+    end
+    
+    #If user checks out, return the user, else nil
+    if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
+      user
+    else
+      raise WrongPasswordError, "Incorrect password"
+    end
+  end
+  
   #Encrypt the password
   def encrypt_password
     if password.present?
@@ -21,3 +44,11 @@ class User < ActiveRecord::Base
   end  
   
 end
+
+#Exceptions for authentication
+class NoSuchUserError < RuntimeError
+end
+
+class WrongPasswordError < RuntimeError
+end
+

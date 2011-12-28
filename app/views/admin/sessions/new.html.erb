@@ -1,0 +1,35 @@
+<h1>Login</h1>
+
+<% if flash[:error] %>
+<div class="alert-message error">
+	<p><%= flash[:error] %></p>
+</div>
+<% end %>
+
+<% if flash[:success] %>
+<div class="alert-message success">
+	<p><%= flash[:success] %></p>
+</div>
+<% end %>
+
+<%= form_tag(admin_sessions_path, :class => "form-stacked") do %>
+	
+	<fieldset>
+
+		<div class="clearfix">
+		  <%= label_tag :email %>
+		  <%= text_field_tag :email, @email %>
+		</div>
+
+		<div class="clearfix">
+		  <%= label_tag :password %>
+		  <%= password_field_tag :password %>
+		</div>
+
+	</fieldset>
+
+	<div class="actions">
+	  <%= submit_tag("Login", :class => "btn primary")  %>
+	</div>
+	
+<% end %>
