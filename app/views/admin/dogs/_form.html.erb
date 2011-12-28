@@ -12,7 +12,8 @@
   <% end %>
 
 	<% if @dog.image %>
-	<%= image_tag "/uploads/#{@dog.image}" %>
+	<%= image_tag "/uploads/#{@dog.image}" %><br />
+	<%= @dog.image %>
 	<% end %>
 
 	<fieldset>
