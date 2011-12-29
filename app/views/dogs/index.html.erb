@@ -1,0 +1,17 @@
+<h1>Dog Rescue</h1>
+<p>Check out all the dogs available for adoption:</p>
+
+<div class="dogs">
+	<% @dogs.each do |dog| %>
+		<div class="dog">
+			<div class="dog_image"><%= link_to( image_tag("/uploads/#{dog.image}"), "/dogs/view/#{dog.id}" ) %></div>
+			<div class="dog_description">
+				<h1><%= dog.name %></h1>
+				<p><%= truncate(dog.description, :length => 255) %></p>
+				<p><%= link_to "View more", "/dogs/view/#{dog.id}" %></p>
+			</div>
+		</div>
+		<div class="clearfix">
+		
+	<% end %>
+</div>

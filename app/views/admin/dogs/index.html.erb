@@ -6,6 +6,10 @@
 </div>
 <% end %>
 
+<p>
+	<%= link_to 'New Dog', new_admin_dog_path, :class => "btn primary" %>
+</p>
+
 <table>
   <tr>
 	<th>Image</th>
@@ -30,6 +34,4 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Dog', new_admin_dog_path, :class => "btn primary" %>
+<%= page_navigation_links @dogs %>

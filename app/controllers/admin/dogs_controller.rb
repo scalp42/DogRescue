@@ -5,7 +5,7 @@ class Admin::DogsController < ApplicationController
   
   # GET /admin/dogs
   def index
-    @dogs = Dog.all
+    @dogs = Dog.paginate(:page => params[:page])
   end
 
   # GET /dogs/new

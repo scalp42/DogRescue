@@ -2,20 +2,16 @@
 <html>
 <head>
   <title>Dogrescue</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag "960", "application", controller_name %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	
-	<div class="container">
-		
-		<div class="row">
-			<div class="span16">
-				<%= yield %>
-			</div>
+	<div class="container_12">		
+		<div class="grid_12">
+			<%= yield %>
 		</div>
-		
 	</div>
 
 </body>

@@ -1,5 +1,10 @@
 Dogrescue::Application.routes.draw do
 
+  root :to => "dogs#index"
+  get "dogs" => "dogs#index"
+  get "dogs/index"
+  match "dogs/view/:id" => "dogs#view"
+
   get "admin" => "admin/dogs#index"
   get "admin/login" => "admin/sessions#new", :as => "admin_login"
   get "admin/logout" => "admin/sessions#destroy", :as => "admin_logout"

@@ -1,3 +1,21 @@
 // Place all the styles related to the dogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dog_image {
+	float: left;
+	
+	img {
+		width: 250px;
+	}
+
+}
+
+.dog_description {
+	margin-left: 270px;
+	
+	h1 {
+		font-size: 22px;
+	}
+}
+

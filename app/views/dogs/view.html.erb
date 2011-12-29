@@ -1,0 +1,8 @@
+<h1><%= @dog.name %></h1>
+<p><%= image_tag "/uploads/#{@dog.image}" %></p>
+<p><%= @dog.description %></p>
+<p>
+	<b>Breed: </b> <%= @dog.breed %> <br />
+	<b>Availability: </b> <%= @dog.status %>
+</p>
+<p><%= link_to "Back", dogs_path %></p>
